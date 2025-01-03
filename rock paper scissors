@@ -1,0 +1,43 @@
+
+import random 
+
+def comp_choice():
+    choices = ["rock","paper","scissor"]
+    comp = random.choice(choices)
+    return comp
+
+def human_choice():
+    human = str(input("Enter rock paper or scissor:")).lower()
+    if human not in ["rock","paper","scissor"]:
+        print("Invalided input. Please retype correcty.")
+        human_choice()
+    return human
+
+
+def determine_winner(comp, human):
+    if comp == human: 
+        print("Its a tie")
+    elif (comp == "rock" and human == "scissor") or (comp == "scissor" and human == "paper") or (comp == "paper" and human == "rock"):
+        print("Sorry you lost/")
+    else:
+        print("You win.")
+        
+
+def game():
+    comp = comp_choice()
+    human = human_choice()
+
+    print(f'Your choice is {human}.')
+    print(f'Computer choice is {comp}.')
+
+    return determine_winner(comp,human)
+ 
+def play_again():
+    play_again = input("Do you want to play again(Yes/No):").lower()
+    if play_again == "yes":
+        game()
+    else:
+        print("Thankyou for playing this game.")
+
+game()
+play_again()
